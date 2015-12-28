@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AzureConstructionsProgressTracker.Common;
-using AzureConstructionsProgressTracker.Features.ProgressTracking;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace AzureConstructionsProgressTracker

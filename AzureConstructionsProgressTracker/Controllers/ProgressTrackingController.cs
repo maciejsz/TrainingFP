@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using AzureConstructionsProgressTracker.Common;
 using Common;
 using Microsoft.WindowsAzure.Storage;
-using Newtonsoft.Json;
 
-namespace AzureConstructionsProgressTracker.Features.ProgressTracking
+namespace AzureConstructionsProgressTracker.Controllers
 {
     public class ProgressTrackingController : Controller
     {
