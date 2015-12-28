@@ -5,11 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Progress tracking entry details</h2>
 
 <div>
-    <h4>ProgressTrackingEntry</h4>
-    <hr/>
     <dl class="dl-horizontal">
         <dt>
             Project
@@ -43,5 +41,5 @@
     }
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

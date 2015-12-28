@@ -37,7 +37,7 @@ namespace PictureOptimizer
 
             using (var context = new ConstructionsProgressTrackerContext())
             {
-                context.ProgressTrackingEntries.Single(e => e.Id == message.Id).TumbnailPictureReference = uploadedFileUrl;
+                context.ProgressTrackingEntries.Single(e => e.Id == message.Id).ThumbnailPictureReference = uploadedFileUrl;
                 context.SaveChanges();
             }
             
