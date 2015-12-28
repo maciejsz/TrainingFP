@@ -20,7 +20,7 @@ namespace PictureOptimizer
     {
         public static void ProcessQueueMessage([ServiceBusTrigger("resizepicturesqueue")] ResizePictureMessage message, TextWriter logger)
         {
-            var azureStorageConnectionString = ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString;
+            var azureStorageConnectionString = ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ConnectionString;
 
             byte[] data;
             using (var client = new WebClient())
