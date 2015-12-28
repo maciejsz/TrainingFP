@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
 using Common;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage;
@@ -28,12 +22,12 @@ namespace PictureOptimizer
                 data = client.DownloadData(message.PictureReference);
             }
 
-            var tumbnail = ImageResizer.CreateTumbnail(Image.FromStream(new MemoryStream(data)));
+            var thumbnail = ImageResizer.CreateThumbnail(Image.FromStream(new MemoryStream(data)));
 
             var storageAccount = CloudStorageAccount.Parse(azureStorageConnectionString);
             var filesStorageService = new FilesStorageService(storageAccount);
             
-            var uploadedFileUrl = filesStorageService.UploadFile(Guid.NewGuid().ToString(), tumbnail).Result;
+            var uploadedFileUrl = filesStorageService.UploadFile(Guid.NewGuid().ToString(), thumbnail).Result;
 
             using (var context = new ConstructionsProgressTrackerContext())
             {
@@ -41,7 +35,7 @@ namespace PictureOptimizer
                 context.SaveChanges();
             }
             
-            logger.WriteLine($"Tumbnail for entry:{message.Id} successfully created.");
+            logger.WriteLine($"Thumbnail for entry: {message.Id} successfully created.");
         }
 }
 }
