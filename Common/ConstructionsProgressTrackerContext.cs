@@ -13,11 +13,11 @@ namespace Common
     
         public ConstructionsProgressTrackerContext() : base("name=ConstructionsProgressTrackerContext")
         {
-            Database.SetInitializer<ConstructionsProgressTrackerContext>(new DropCreateDatabaseIfModelChanges<ConstructionsProgressTrackerContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ConstructionsProgressTrackerContext>());
         }
 
-        public System.Data.Entity.DbSet<ConstructionProject> ConstructionProjects { get; set; }
+        public DbSet<ConstructionProject> ConstructionProjects { get; set; }
 
-        public System.Data.Entity.DbSet<ProgressTrackingEntry> ProgressTrackingEntries { get; set; }
+        public DbSet<ProgressTrackingEntry> ProgressTrackingEntries { get; set; }
     }
 }

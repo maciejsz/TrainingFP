@@ -8,13 +8,13 @@ namespace PictureOptimizer
 {
     public class ImageResizer
     {
-        private const int DefaultTumbnailHeight = 100;
+        private const int DefaultThumbnailHeight = 100;
 
-        public static Stream CreateTumbnail(Image image)
+        public static Stream CreateThumbnail(Image image)
         {
-            int width = DefaultTumbnailHeight * image.Width / image.Height;
-            var destRect = new Rectangle(0, 0, width, DefaultTumbnailHeight);
-            var destImage = new Bitmap(width, DefaultTumbnailHeight);
+            int width = DefaultThumbnailHeight * image.Width / image.Height;
+            var destRect = new Rectangle(0, 0, width, DefaultThumbnailHeight);
+            var destImage = new Bitmap(width, DefaultThumbnailHeight);
 
             try
             {
