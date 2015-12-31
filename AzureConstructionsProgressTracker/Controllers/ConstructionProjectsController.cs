@@ -84,7 +84,18 @@ namespace AzureConstructionsProgressTracker.Controllers
             }
             return View(constructionProject);
         }
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var project = await db.ConstructionProjects.FindAsync(id);
+            db.ConstructionProjects.Remove(project);
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
