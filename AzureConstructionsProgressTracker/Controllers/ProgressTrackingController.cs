@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using AzureConstructionsProgressTracker.Common;
 using Common;
@@ -71,7 +72,8 @@ namespace AzureConstructionsProgressTracker.Controllers
                     if (file != null && file.ContentLength > 0)
                     {
                         var fileName = Path.GetFileName(file.FileName);
-                        var filePath = await _filesStorageService.UploadFile(fileName, file.InputStream);
+                        var mimeType = MimeMapping.GetMimeMapping(fileName);
+                        var filePath = await _filesStorageService.UploadFile(fileName, file.InputStream, mimeType);
                         progressTrackingEntry.PictureReference = filePath;
                     }
                 }

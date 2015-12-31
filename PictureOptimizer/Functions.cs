@@ -27,7 +27,7 @@ namespace PictureOptimizer
             var storageAccount = CloudStorageAccount.Parse(azureStorageConnectionString);
             var filesStorageService = new FilesStorageService(storageAccount);
             
-            var uploadedFileUrl = filesStorageService.UploadFile(Guid.NewGuid().ToString(), thumbnail).Result;
+            var uploadedFileUrl = filesStorageService.UploadFile(Guid.NewGuid().ToString(), thumbnail, "image/jpeg").Result;
 
             using (var context = new ConstructionsProgressTrackerContext())
             {

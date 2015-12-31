@@ -25,7 +25,7 @@ namespace Common
             _telemetry.InstrumentationKey = TelemetryConfiguration.Active.InstrumentationKey;
         }
         
-        public async Task<string> UploadFile(string fileName, Stream file)
+        public async Task<string> UploadFile(string fileName, Stream file, string mimeType)
         {
             if (!_container.Exists())
             {
@@ -34,6 +34,7 @@ namespace Common
             }
 
             CloudBlockBlob blockBlob = _container.GetBlockBlobReference(fileName);
+            blockBlob.Properties.ContentType = mimeType;
             await blockBlob.UploadFromStreamAsync(file);
 
             _telemetry.TrackTrace(string.Format(CultureInfo.InvariantCulture, "Uploaded file {0}", fileName), SeverityLevel.Information);
