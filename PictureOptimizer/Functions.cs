@@ -35,7 +35,7 @@ namespace PictureOptimizer
                 context.SaveChanges();
             }
             
-            logger.WriteLine($"Thumbnail for entry: {message.Id} successfully created.");
+            logger.WriteLine($"Thumbnail for entry: {message.Id} successfully created. Available at {uploadedFileUrl}.");
         }
-}
+    }
 }
