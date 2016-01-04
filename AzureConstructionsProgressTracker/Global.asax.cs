@@ -1,9 +1,6 @@
-﻿using System.Configuration;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using AzureConstructionsProgressTracker.Common;
-using Microsoft.ApplicationInsights.Extensibility;
 
 namespace AzureConstructionsProgressTracker
 {
@@ -15,15 +12,6 @@ namespace AzureConstructionsProgressTracker
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            var instrumentationKey = ConfigurationManager.AppSettings["AppInsightsInstrumentationKey"];
-            if (!string.IsNullOrWhiteSpace(instrumentationKey))
-            {
-                TelemetryConfiguration.Active.InstrumentationKey = instrumentationKey;
-            }
-
-            var serviceBusManager = new ServiceBusManager(ConfigurationManager.ConnectionStrings["AzureWebJobsServiceBus"].ConnectionString);
-            serviceBusManager.CreateQueue();
         }
     }
 }
