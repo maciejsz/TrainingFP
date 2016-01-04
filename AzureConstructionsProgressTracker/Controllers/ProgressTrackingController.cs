@@ -15,7 +15,7 @@ namespace AzureConstructionsProgressTracker.Controllers
 {
     public class ProgressTrackingController : Controller
     {
-        private ConstructionsProgressTrackerContext _db = new ConstructionsProgressTrackerContext();
+        private readonly ConstructionsProgressTrackerContext _db = new ConstructionsProgressTrackerContext();
         private readonly FilesStorageService _filesStorageService;
         private readonly ServiceBusManager _serviceBusManager = new ServiceBusManager(ConfigurationManager.ConnectionStrings["AzureWebJobsServiceBus"].ConnectionString);
 
@@ -101,6 +101,7 @@ namespace AzureConstructionsProgressTracker.Controllers
             {
                 _db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

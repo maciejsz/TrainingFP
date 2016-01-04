@@ -1,7 +1,6 @@
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;

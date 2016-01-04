@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -22,8 +18,10 @@ namespace AzureConstructionsProgressTracker
 
             var instrumentationKey = ConfigurationManager.AppSettings["AppInsightsInstrumentationKey"];
             if (!string.IsNullOrWhiteSpace(instrumentationKey))
+            {
                 TelemetryConfiguration.Active.InstrumentationKey = instrumentationKey;
-            
+            }
+
             var serviceBusManager = new ServiceBusManager(ConfigurationManager.ConnectionStrings["AzureWebJobsServiceBus"].ConnectionString);
             serviceBusManager.CreateQueue();
         }
