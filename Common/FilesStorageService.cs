@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
@@ -16,8 +17,19 @@ namespace Common
         private readonly StorageUri _blobStorageUri;
         private readonly TelemetryClient _telemetry = new TelemetryClient();
 
-        public FilesStorageService(CloudStorageAccount storageAccount)
+        public FilesStorageService(string storageConnectionString)
         {
+            if (string.IsNullOrEmpty(storageConnectionString))
+            {
+                throw new ArgumentNullException(nameof(storageConnectionString));
+            }
+
+            CloudStorageAccount storageAccount;
+            if (!CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
+            {
+                throw new ArgumentException("Could not parse the connection string.", nameof(storageConnectionString));
+            }
+
             _blobStorageUri = storageAccount.BlobStorageUri;
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
             _container = blobClient.GetContainerReference(ContainerName);

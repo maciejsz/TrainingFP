@@ -24,8 +24,7 @@ namespace PictureOptimizer
 
             var thumbnail = ImageResizer.CreateThumbnail(Image.FromStream(new MemoryStream(data)));
 
-            var storageAccount = CloudStorageAccount.Parse(azureStorageConnectionString);
-            var filesStorageService = new FilesStorageService(storageAccount);
+            var filesStorageService = new FilesStorageService(azureStorageConnectionString);
             
             var uploadedFileUrl = filesStorageService.UploadFile(Guid.NewGuid().ToString(), thumbnail, "image/jpeg").Result;
 

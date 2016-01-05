@@ -9,7 +9,6 @@ using System.Web;
 using System.Web.Mvc;
 using AzureConstructionsProgressTracker.Common;
 using Common;
-using Microsoft.WindowsAzure.Storage;
 
 namespace AzureConstructionsProgressTracker.Controllers
 {
@@ -21,13 +20,7 @@ namespace AzureConstructionsProgressTracker.Controllers
 
         public ProgressTrackingController()
         {
-            CloudStorageAccount cloudStorageAccount;
-            if (CloudStorageAccount.TryParse(
-                ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString,
-                out cloudStorageAccount))
-            {
-                _filesStorageService = new FilesStorageService(cloudStorageAccount);
-            }
+            _filesStorageService = new FilesStorageService(ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString);
         }
 
         // GET: ProgressTracking
